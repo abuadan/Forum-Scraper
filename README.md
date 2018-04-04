@@ -40,7 +40,7 @@ profile data can be found using the [bitcointalk sitemap](https://bitcointalk.or
 }
 ```
 
-##Post
+## Post
 
 Unlike profiles these are harder to get at, these posts contain the following;
 
@@ -62,9 +62,8 @@ Unlike profiles these are harder to get at, these posts contain the following;
 	"board":"string",
 	"topic":"string",
 	"topic_id:"integer",
-	"posts":
-	[
-		{
+	"posts":[
+	{
 		"user_name":"string",
 		"position":"string",
 		"merit":"string",
@@ -75,20 +74,19 @@ Unlike profiles these are harder to get at, these posts contain the following;
 		"links_mentioned":"string",
 		"images":"byte",
 		"signature":"string"
-		},
-		{
+	},
+	{
 		"user_name":"string",
 		"position":"string",
 		"merit":"string",
 		"signature":"string",
 		"post_title":"string",
 		"post":"string",
-		"Time":"date_time",
 		"post_count":"integer",
 		"links_mentioned":"string",
 		"images":"byte",
-		"signature":"integer"
-		}
+		"signature":"string"
+	},
 	],
 	"post_page":"integer",
 	"advert":"string",
