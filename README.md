@@ -32,7 +32,7 @@ profile data can be found using the [bitcointalk sitemap](https://bitcointalk.or
 ```json
 {
   "user_name:"string",
-  "profile_url:"string",
+  "profile_url":"string",
   "profile_id":"int",
   "profile_object:[
                     all_data_in_profile_table
@@ -49,11 +49,6 @@ Unlike profiles these are harder to get at, these posts contain the following;
 - Topic
 - Post
     - Author
-        - user_name
-        - position
-        - activity
-        - merit
-        -signature
     - Post Title
     - Post/Message
     - Time
@@ -94,7 +89,7 @@ Unlike profiles these are harder to get at, these posts contain the following;
 		"images":"byte",
 		"signature":"integer"
 		}
-	]
+	],
 	"post_page":"integer",
 	"advert":"string",
 	"post_language":"string"
