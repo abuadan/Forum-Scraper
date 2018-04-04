@@ -31,7 +31,7 @@ profile data can be found using the [bitcointalk sitemap](https://bitcointalk.or
 
 ```json
 {
-  "user_name:"string",
+  "user_name":"string",
   "profile_url":"string",
   "profile_id":"int",
   "profile_object":[
