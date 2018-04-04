@@ -34,8 +34,8 @@ profile data can be found using the [bitcointalk sitemap](https://bitcointalk.or
   "user_name:"string",
   "profile_url":"string",
   "profile_id":"int",
-  "profile_object:[
-                    all_data_in_profile_table
+  "profile_object":[
+                    "all_data_in_profile_table"
                     ]
 }
 ```
@@ -61,7 +61,7 @@ Unlike profiles these are harder to get at, these posts contain the following;
 	"url":"string",
 	"board":"string",
 	"topic":"string",
-	"topic_id:"integer",
+	"topic_id":"integer",
 	"posts":[
 	{
 		"user_name":"string",
