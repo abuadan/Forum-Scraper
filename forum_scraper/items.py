@@ -12,8 +12,8 @@ from scrapy import Item
 class PostItem(Item):
     # define the fields for your item here like:
     topic_page_html = Field()
-    bitcoin_address = Field()
-    bitcoin_transaction = Field()
+    # bitcoin_address = Field()
+    # bitcoin_transaction = Field()
     board_title = Field()
     board_link = Field()
     board_moderator = Field()
