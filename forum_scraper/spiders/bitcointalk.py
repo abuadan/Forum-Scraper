@@ -92,7 +92,11 @@ class BitcointalkSpider(CrawlSpider):
                         d['message_date_time_stamp'] = int(time.mktime(formatted_date.timetuple()))
                 except ValueError:
                     pass
-                    d['message_count_in_post'] = int(message_count.strip('#'))
+                d['message_count_in_post'] = int(message_count.strip('#'))
+                # if d['message_count_in_post'] == 1:
+                #     d['started_thread'] = True
+                # else:
+                #     d['started_thread'] = False
                 message_link = post_item.xpath(".//div/a[contains(@class, 'message_number')]/@href").extract_first()
                 d['message_link'] = message_link
                 poster_username = post_item.xpath(".//td[contains(@class, 'poster_info')]/b/a/text()").extract_first()
@@ -106,13 +110,13 @@ class BitcointalkSpider(CrawlSpider):
 
     def parse_profile(self, response):
         profile_items = ProfileItem()
-        profile_table = response.xpath(".//*[contains(@class, 'windowbg')]/table/tr")
         _user_name_ = response.xpath('.//title/text()').extract()
         if 'Error' in _user_name_:
             raise IgnoreRequest()
-        profile_items['poster_username'] = _user_name_[0].split(' ')[len(_user_name_)-1]
+        profile_items['poster_username'] = _user_name_[0].split(' ')[len(_user_name_)]
         profile_items['poster_profile_url'] = response.url
         profile_items['poster_profile_id'] = response.url.split('=')[2]
+        profile_table = response.xpath(".//*[contains(@class, 'windowbg')]/table/tr")
         info = {}
         profile_object = []
         for row in profile_table:
@@ -120,7 +124,7 @@ class BitcointalkSpider(CrawlSpider):
             filtered_profile_info = list(filter(lambda x: '\n\t' not in x, profile_info))
             if not filtered_profile_info:
                 continue
-            elif len(filtered_profile_info) == 1:
+            if len(filtered_profile_info) == 1:
                 key_ = filtered_profile_info[0]
                 key_ = key_.replace(':', '')
                 key_ = key_.replace(' ', '')
@@ -130,8 +134,8 @@ class BitcointalkSpider(CrawlSpider):
                 key_ = key_.replace(':', '')
                 key_ = key_.replace(' ', '')
                 info[key_] = ' '.join(filtered_profile_info[1:])
-        profile_object.append(info)
-        profile_items['profile_object'] = profile_object
+        # profile_object.append(info)
+        profile_items['profile_object'] = info
         yield profile_items
 
     def parse_item(self, response):
