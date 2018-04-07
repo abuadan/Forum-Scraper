@@ -72,7 +72,7 @@ class BitcointalkSpider(CrawlSpider):
         for post_item in post_windows:
             d = {}
             __post_text__ = post_item.xpath(".//div[contains(@class,'post')]/text()").extract()
-            if not __post_text__ or ' '.join(__post_text__) == 1522750019:
+            if not __post_text__ or ' '.join(__post_text__) == '1522750019':
                 continue
             else:
                 d['post_text'] = ' '.join(__post_text__)
@@ -110,7 +110,7 @@ class BitcointalkSpider(CrawlSpider):
 
     def parse_profile(self, response):
         profile_items = ProfileItem()
-        _user_name_ = response.xpath('.//title/text()').extract()
+        _user_name_ = response.xpath('/html/head/title/text()').extract()
         if 'Error' in _user_name_:
             raise IgnoreRequest()
         profile_items['poster_username'] = _user_name_[0].split(' ')[len(_user_name_)]
@@ -134,7 +134,7 @@ class BitcointalkSpider(CrawlSpider):
                 key_ = key_.replace(':', '')
                 key_ = key_.replace(' ', '')
                 info[key_] = ' '.join(filtered_profile_info[1:])
-        # profile_object.append(info)
+            profile_object.append(info)
         profile_items['profile_object'] = info
         yield profile_items
 
